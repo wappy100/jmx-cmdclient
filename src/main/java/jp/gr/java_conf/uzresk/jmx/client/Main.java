@@ -247,6 +247,7 @@ public class Main {
 
 		Object obj = null;
 		String attribute = objectNameAttribute.getAttribute();
+		String objectname = objectNameAttribute.getObjectName().replaceAll(",", "@").replaceAll(":", "@");
 		try {
 			obj = mbsc.getAttribute(objectName, attribute);
 		} catch (Exception e) {
@@ -261,7 +262,7 @@ public class Main {
 			int i = 0;
 			for (String key : keys) {
 				if (init) {
-					header.add(attribute + "@" + key);
+					header.add(objectname + "@" + attribute + "@" + key);
 				}
 				if (i == 0) {
 					value = data.get(key).toString();
